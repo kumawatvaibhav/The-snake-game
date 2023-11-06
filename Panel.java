@@ -224,7 +224,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     @Override //not in use but have to be override 
     public void keyReleased(KeyEvent e){}
 
-    private void newEnemy() {
+    private void newEnemy() {  //to create new enemy 
         enemyX=xPos[random.nextInt(34)];
         enemyY=yPos[random.nextInt(23)];
 
@@ -235,7 +235,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
         }
     }
 
-    private void collideswithenemy() {
+    private void collideswithenemy() {   //after the head touches the enemy
         if(snakexlength[0]==enemyX && snakeylength[0]==enemyY){
             newEnemy();
             lengthofsnake++;
