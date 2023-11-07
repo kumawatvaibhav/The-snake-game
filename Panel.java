@@ -36,13 +36,10 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     private boolean pause=false;
 
     //Image variable declare and provided link of image
-    private ImageIcon snaketitle = new ImageIcon( getClass().getResource("snaketitle.jpg")); 
-    private ImageIcon snakeimage = new ImageIcon( getClass().getResource("snakeimage.png")); 
-    private ImageIcon downmouth = new ImageIcon( getClass().getResource("downmouth.png")); 
-    private ImageIcon upmouth = new ImageIcon( getClass().getResource("upmouth.png")); 
-    private ImageIcon rightmouth = new ImageIcon( getClass().getResource("rightmouth.png")); 
-    private ImageIcon leftmouth = new ImageIcon( getClass().getResource("leftmouth.png")); 
-    private ImageIcon enemy = new ImageIcon( getClass().getResource("enemy.png")); 
+    private ImageIcon title = new ImageIcon( getClass().getResource("title.png")); 
+    private ImageIcon snakehead = new ImageIcon( getClass().getResource("snake_green_head.png")); 
+    private ImageIcon enemy = new ImageIcon( getClass().getResource("apple_red.png")); 
+    private ImageIcon snakeimage = new ImageIcon( getClass().getResource("snake_green_blob.png")); 
 
     //speed of snake
     private Timer timer;
@@ -68,7 +65,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
         g.drawRect(24, 74, 851, 576);
         
         //for playground :
-        snaketitle.paintIcon(this,g,25 ,11);
+        title.paintIcon(this,g,25 ,11);
         g.setColor(Color.BLACK);
         g.fillRect(25, 75, 850, 575);
 
@@ -84,17 +81,8 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
         }
 
         //pasting the snake-body image 
-        if(left){
-            leftmouth.paintIcon(this,g,snakexlength[0],snakeylength[0]);
-        }
-        if(right){
-            rightmouth.paintIcon(this,g,snakexlength[0],snakeylength[0]);
-        }
-        if(up){
-            upmouth.paintIcon(this,g,snakexlength[0],snakeylength[0]);
-        }
-        if(down){
-            downmouth.paintIcon(this,g,snakexlength[0],snakeylength[0]);
+        if(left || right || up || down){
+            snakehead.paintIcon(this,g,snakexlength[0],snakeylength[0]);
         }
         for(int i=1;i<lengthofsnake;i++){
             snakeimage.paintIcon(this,g,snakexlength[i],snakeylength[i]);
@@ -178,7 +166,11 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     public void keyPressed(KeyEvent e) {
         // getting values for the arrow - keys : 
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            restart();
+            for(int i = lengthofsnake-1;i>0;i--){
+                if(snakexlength[i]==snakexlength[0] && snakeylength[i]==snakeylength[0]){
+                    restart();
+                }
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (pause) { // Unpause the game
                 pause = false;
