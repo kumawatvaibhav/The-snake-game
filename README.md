@@ -24,3 +24,6 @@ Press the ENTER key to pause or resume the game.<br>
 =>Contributing : <br>
 If you'd like to contribute to the project, please feel free to fork the repository, make changes, and create a pull request. We welcome any improvements, bug fixes, or new features!
 
+GamePlay video : 
+https://github.com/kumawatvaibhav/The-snake-game/assets/118861839/12802be9-1c67-4432-8d03-c9ae3dadab98
+
